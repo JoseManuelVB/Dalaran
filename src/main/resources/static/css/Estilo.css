@@ -7,7 +7,7 @@ body {
     
     width: 100%;
     margin: 0;
-    background: linear-gradient(to right, rgba(0, 0, 139, 0.518), rgba(0, 0, 255, 0.08))
+    background: linear-gradient(to right, rgba(0, 0, 139, 0.518), rgba(0, 0, 255, 0.18))
 }
 header{
     font-family: Fresh Lychee;
@@ -76,7 +76,7 @@ footer{
 /* vista modificar*/ 
 
 #bie{
-    background-color: rgba(122,122,212,0.4);
+    background-color: rgba(0,255,255,0.45);
     width: 30%;
     height: 330px;
     
@@ -93,4 +93,10 @@ footer{
 }
 .integ{
     
+}
+#refe{
+    color: blue;
+}
+#leng{
+    color:blue;
 }

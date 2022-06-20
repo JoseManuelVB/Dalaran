@@ -19,15 +19,15 @@
         <footer th:fragment="footer">
             <div>
                 <br/>
-                <a th:href="@{/(lang=es)}">ES</a>   |
-                <a th:href="@{/(lang=en)}">EN</a>   |
+                <a id="leng" th:href="@{/(lang=es)}">ES</a>   |
+                <a id="leng" th:href="@{/(lang=en)}">EN</a>   |
             </div>
-            <span>[[#{plantilla.pie-pagina}]]<a href="https://www.google.com/" 
+            <span>[[#{plantilla.pie-pagina}]]<a id="refe" href="https://github.com/JoseManuelVB/Dalaran" 
                                                 target="_blank">DalaranAQ</a></span>
             <form method="POST" th:action="@{/logout}">
                 <b>Users: </b><span sec:authentication ="name">Usuario que hizo login: </span> |
                 <b>Roles: </b><span sec:authentication ="principal.authorities">Roles: </span> |
-                <a href="#" onclick="this.parentNode.submit();">Logout</a>
+                <a id="leng" href="#" onclick="this.parentNode.submit();">Logout</a>
             </form>
         </footer>
     </body>
