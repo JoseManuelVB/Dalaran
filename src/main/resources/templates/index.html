@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="#" th:href="@{/img/icoA.png}" type="image/x-icon"/>
+        <link th:href="@{css/Estilo.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+        <br/>
+        <div id="arriba">
+            <button sec:authorize="hasRole('ROLE_ADMIN')">
+                <a id="agregar" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{libro.agregar}]]</a>
+            </button>
+        </div>
+        <br/>
+        <div id="principal" th:if="${libros !=null and !libros.empty}">
+            <table>
+                <tr>
+                    <th>[[#{libro.nombre}]]</th>
+                    <th>[[#{libro.autor}]]</th>
+                    <th>[[#{libro.year}]]</th>
+                    <th>[[#{libro.ciudad}]]</th>
+                    <th>[[#{libro.editorial}]]</th>
+                    <th>[[#{libro.volumen}]]</th>
+                    <th>[[#{libro.paginas}]]</th>
+                    <th>[[#{libro.genero}]]</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.editar}]]</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.eliminar}]]</th>
+                </tr>
+                <tr th:each="libro:${libros}">
+                    <td th:text="${libro.nombre}">Mostrar nombre</td>
+                    <td th:text="${libro.autor}">Mostrar autor</td>
+                    <td th:text="${libro.year}">Mostrar year</td>
+                    <td th:text="${libro.ciudad}">Mostrar ciudad</td>
+                    <td th:text="${libro.editorial}">Mostrar editorial</td>
+                    <td th:text="${libro.volumen}">Mostrar volumen</td>
+                    <td th:text="${libro.paginas}">Mostrar noPaginas</td>
+                    <td th:text="${libro.genero}">Mostrar genero</td>
+                    
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a id="edi" th:href="@{/editar/} + ${libro.idLibro}">[[#{accion.editar}]]</a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a id="del" th:href="@{/eliminar(idLibro=${libro.idLibro})}">[[#{accion.eliminar}]]</a></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${libros == null or libros.empty}">
+            [[#{libro.lista-vacia}]]
+        </div>
+        
+        <footer th:replace="layout/plantilla :: footer"></footer>
+    </body>
+</html>

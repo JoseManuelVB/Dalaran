@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>[[#{libro.formulario}]]</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/Estilo.css">
+        <link rel="icon" href="#" th:href="@{/img/icoA.png}" type="image/x-icon"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+        <fieldset id="bie">
+            <h2>[[#{libro.formulario}]]</h2>
+            <button>
+            <a id="agregar" th:href="@{/}">[[#{accion.regresar}]]</a>
+            </button>
+            <br/><br/>
+            <form id="alin" th:action="@{/guardar}" method="post" th:object="${libro}">
+                <input type="hidden" name="idLibro" th:field="*{idLibro}">
+                    <div class="lunares">
+                        <div class="leal">
+                        <label for="nombre">[[#{libro.nombre}]] </label>
+                        <br/>
+                        <label for="autor">[[#{libro.autor}]] </label>
+                        <br/>
+                        <label for="year">[[#{libro.year}]] </label>
+                        <br/>
+                        <label for="ciudad">[[#{libro.ciudad}]] </label>
+                        <br/>
+                        <label for="editorial">[[#{libro.editorial}]] </label>
+                        <br/>
+                        <label for="volumen">[[#{libro.volumen}]] </label>
+                        <br/>
+                        <label for="paginas">[[#{libro.paginas}]] </label>
+                        <br/>
+                        <label for="genero">[[#{libro.genero}]] </label>
+                        </div>
+                        <div class="integ">
+                        <input type="text" name="nombre" th:field="*{nombre}"/>
+                        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
+                        <input type="text" name="autor" th:field="*{autor}"/>
+                        <span th:if="${#fields.hasErrors('autor')}" th:errors="*{autor}">Error autor</span>
+                        <input type="text" name="year" th:field="*{year}"/>
+                        <input type="text" name="ciudad" th:field="*{ciudad}"/>
+                        <span th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}">Error ciudad</span>
+                        <input type="text" name="editorial" th:field="*{editorial}"/>
+                        <span th:if="${#fields.hasErrors('editorial')}" th:errors="*{editorial}">Error editorial</span>
+                        <input type="text" name="volumen" th:field="*{volumen}"/>
+                        <input type="text" name="paginas" th:field="*{paginas}"/>
+                        <input type="text" name="genero" th:field="*{genero}"/>
+                        <span th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}">Error genero</span>
+                        <br/>
+                        </div>
+                    </div>
+                    <br>
+                    <input type="submit" name="guardar" th:value="#{accion.guardar}"/>
+            </form>
+        </fieldset>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+    </body>
+</html>
